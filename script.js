@@ -9,3 +9,13 @@ const wordBank = [
   ];
   
   let winner, incorrectGuesses, correctGuesses, currentWord, displayedWord, hintUsed;
+
+    //cached elements
+const messageEl = document.querySelector('#message');
+const playAgainEl = document.querySelector('#play-again');
+const restartEl = document.querySelector('#restart-game');
+const buttonEls = document.querySelectorAll('.btn-letter');
+const guessEl = document.querySelector('#guess-btn');
+const guessInputEl = document.querySelector('#guess');
+const hintEl = document.querySelector('#hint-btn');
+const hintDescriptionEl = document.querySelector('#hint-description');

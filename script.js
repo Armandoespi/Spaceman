@@ -8,3 +8,4 @@ const wordBank = [
     { word: 'ASTRONAUT', description: 'A person trained to travel and work in space.' }
   ];
   
+  let winner, incorrectGuesses, correctGuesses, currentWord, displayedWord, hintUsed;

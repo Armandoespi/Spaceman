@@ -26,3 +26,20 @@ restartEl.addEventListener('click', initializeGame);
 buttonEls.forEach(button => button.addEventListener('click', handleLetterGuess));
 guessEl.addEventListener('click', handleWordGuess);
 hintEl.addEventListener('click', provideHint);
+
+// functions
+initializeGame();
+
+function initializeGame() {
+  const randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+  currentWord = randomWord.word.toUpperCase();
+  displayedWord = '_'.repeat(currentWord.length);
+  incorrectGuesses = [];
+  correctGuesses = [];
+  winner = false;
+  hintUsed = false;
+  hintDescriptionEl.textContent = '';
+  restartEl.style.display = 'none';
+  hintEl.style.display = 'block';
+  render();
+}

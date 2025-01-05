@@ -19,3 +19,10 @@ const guessEl = document.querySelector('#guess-btn');
 const guessInputEl = document.querySelector('#guess');
 const hintEl = document.querySelector('#hint-btn');
 const hintDescriptionEl = document.querySelector('#hint-description');
+
+// event listners
+playAgainEl.addEventListener('click', initializeGame);
+restartEl.addEventListener('click', initializeGame);
+buttonEls.forEach(button => button.addEventListener('click', handleLetterGuess));
+guessEl.addEventListener('click', handleWordGuess);
+hintEl.addEventListener('click', provideHint);

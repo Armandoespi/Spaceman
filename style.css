@@ -53,3 +53,36 @@ h1 {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
+.btn-letter:hover {
+    background-color: #1abc9c;
+    color: #2c3e50;
+}
+
+/* Input section */
+#input-section {
+    margin-left: 40px;
+}
+/* General button styling */
+button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #34495e;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+button:hover {
+    background-color: #1abc9c;
+    color: #2c3e50;
+    transform: scale(1.05);
+}
+
+/* Message and hint description */
+#message, #hint-description {
+    color: #ecf0f1;
+    font-size: 1.8rem;
+    margin-top: 20px;
+}
+

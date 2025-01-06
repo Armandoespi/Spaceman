@@ -4,13 +4,14 @@
 }
 
 body {
-    background: url("https://tse2.mm.bing.net/th?id=OIP.vhN8VXjbWYzQ0MzG0AtpnAHaEL&pid=Api&P=0&h=220") no-repeat center center fixed;
+    background: url("https://tse1.mm.bing.net/th?id=OIP.F0ED9nOeVLgkCg08Dg1O-gHaEK&pid=Api&P=0&h=220") no-repeat center center fixed;
     background-size: cover;
     font-family: 'Orbitron', sans-serif;
     font-size: 1.2rem;
     margin: 0;
     padding: 0;
 }
+
 /* Styling for the main title */
 h1 {
     color: white;
@@ -20,6 +21,7 @@ h1 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin-top: 20px;
 }
+
 /* Main game container */
 #game-container {
     display: flex;
@@ -28,6 +30,7 @@ h1 {
     padding: 20px;
     height: 100vh;
 }
+
 /* Alphabet and message section */
 #alphabet-container {
     display: flex;
@@ -40,28 +43,31 @@ h1 {
     border-radius: 10px;
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
 }
+
 /* Styling for individual letter buttons */
 .btn-letter {
     font-size: 1.5rem;
     margin: 5px;
     padding: 15px 20px;
-    background-color: #34495e;
-    color: #ecf0f1;
-    border: 2px solid #ecf0f1;
+    background-color: #2c3e50; /* Darker shade for the button */
+    color: #ecf0f1; /* Light color for the text */
+    border: 2px solid #ecf0f1; /* Light border */
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
+
 .btn-letter:hover {
-    background-color: #1abc9c;
-    color: #2c3e50;
+    background-color: #1abc9c; /* Lighter, contrasting color on hover */
+    color: #2c3e50; /* Darker color for text when hovered */
 }
 
 /* Input section */
 #input-section {
     margin-left: 40px;
 }
+
 /* General button styling */
 button {
     padding: 10px 20px;
@@ -73,6 +79,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
+
 button:hover {
     background-color: #1abc9c;
     color: #2c3e50;
@@ -94,5 +101,5 @@ button:hover {
 }
 
 #restart-game:hover {
-    background-color: #2ecc71;
+    background-color: #2ecc71;
 }

@@ -69,23 +69,27 @@ const wordBank = [
     }
   }
   
-  function handleLetterGuess(event) {
-    const letter = event.target.textContent.toUpperCase();
-  
-    if (correctGuesses.includes(letter) || incorrectGuesses.includes(letter)) {
-      messageEl.textContent = 'You already guessed that letter!';
-      return;
-    }
-  
-    if (currentWord.includes(letter)) {
-      correctGuesses.push(letter);
-      updateDisplayedWord();
-    } else {
-      incorrectGuesses.push(letter);
-    }
-    checkGameOver();
+ function handleLetterGuess(event) {
+  const button = event.target;
+  const letter = button.textContent.toUpperCase();
+
+  if (correctGuesses.includes(letter) || incorrectGuesses.includes(letter)) {
+    messageEl.textContent = 'You already guessed that letter!';
+    return;
   }
-  
+
+  if (currentWord.includes(letter)) {
+    correctGuesses.push(letter);
+    updateDisplayedWord();
+  } else {
+    incorrectGuesses.push(letter);
+    button.classList.add('wrong-guess'); // Highlight wrong guess
+  }
+
+  button.disabled = true; // Disable the button
+  checkGameOver();
+}
+
   function handleWordGuess() {
     const guessedWord = guessInputEl.value.toUpperCase();
   
@@ -107,7 +111,8 @@ const wordBank = [
       .join('');
     render();
   }
-  
+
+
   function provideHint() {
     if (hintUsed) {
       messageEl.textContent = "You have already used the hint!";

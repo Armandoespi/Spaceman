@@ -10,7 +10,7 @@ const wordBank = [
   
   let winner, incorrectGuesses, correctGuesses, currentWord, displayedWord, hintUsed;
   
-  //cached elements
+  // Cached elements
   const messageEl = document.querySelector('#message');
   const playAgainEl = document.querySelector('#play-again');
   const restartEl = document.querySelector('#restart-game');
@@ -19,15 +19,16 @@ const wordBank = [
   const guessInputEl = document.querySelector('#guess');
   const hintEl = document.querySelector('#hint-btn');
   const hintDescriptionEl = document.querySelector('#hint-description');
+  const wrongGuessesEl = document.querySelector('#wrong-guesses'); // Add this line to track wrong guesses
   
-  // event listeners
+  // Event listeners
   playAgainEl.addEventListener('click', initializeGame);
   restartEl.addEventListener('click', initializeGame);
   buttonEls.forEach(button => button.addEventListener('click', handleLetterGuess));
   guessEl.addEventListener('click', handleWordGuess);
   hintEl.addEventListener('click', provideHint);
   
-  // functions
+  // Initialize the game
   initializeGame();
   
   function initializeGame() {
@@ -41,15 +42,22 @@ const wordBank = [
     hintDescriptionEl.textContent = '';
     restartEl.style.display = 'none';
     hintEl.style.display = 'block';
+  
+    resetKeyboard(); // Reset keyboard styles and state
     render();
+  }
+  
+  function resetKeyboard() {
+    buttonEls.forEach(button => {
+      button.disabled = false; // Enable all buttons
+      button.classList.remove('correct-guess', 'wrong-guess'); // Remove any added styles
+    });
   }
   
   function render() {
     messageEl.textContent = `Current word: ${formatDisplayedWord(displayedWord)}`;
-    const wrongGuessesEl = document.querySelector('#wrong-guesses');
-    if (wrongGuessesEl) {
-      wrongGuessesEl.textContent = `Wrong guesses: ${incorrectGuesses.join(', ')}`;
-    }
+    // Show wrong guesses
+    wrongGuessesEl.textContent = `Wrong guesses: ${incorrectGuesses.join(', ')}`;
   }
   
   function formatDisplayedWord(word) {
@@ -69,27 +77,28 @@ const wordBank = [
     }
   }
   
- function handleLetterGuess(event) {
-  const button = event.target;
-  const letter = button.textContent.toUpperCase();
-
-  if (correctGuesses.includes(letter) || incorrectGuesses.includes(letter)) {
-    messageEl.textContent = 'You already guessed that letter!';
-    return;
+  function handleLetterGuess(event) {
+    const button = event.target;
+    const letter = button.textContent.toUpperCase();
+  
+    if (correctGuesses.includes(letter) || incorrectGuesses.includes(letter)) {
+      messageEl.textContent = 'You already guessed that letter!';
+      return;
+    }
+  
+    if (currentWord.includes(letter)) {
+      correctGuesses.push(letter);
+      button.classList.add('correct-guess'); // Highlight correct guess
+      updateDisplayedWord();
+    } else {
+      incorrectGuesses.push(letter);
+      button.classList.add('wrong-guess'); // Highlight wrong guess
+    }
+  
+    button.disabled = true; // Disable the button
+    checkGameOver();
   }
-
-  if (currentWord.includes(letter)) {
-    correctGuesses.push(letter);
-    updateDisplayedWord();
-  } else {
-    incorrectGuesses.push(letter);
-    button.classList.add('wrong-guess'); // Highlight wrong guess
-  }
-
-  button.disabled = true; // Disable the button
-  checkGameOver();
-}
-
+  
   function handleWordGuess() {
     const guessedWord = guessInputEl.value.toUpperCase();
   
@@ -111,8 +120,7 @@ const wordBank = [
       .join('');
     render();
   }
-
-
+  
   function provideHint() {
     if (hintUsed) {
       messageEl.textContent = "You have already used the hint!";

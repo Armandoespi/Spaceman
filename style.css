@@ -103,3 +103,13 @@ button:hover {
 #restart-game:hover {
     background-color: #2ecc71;
 }
+.correct-guess {
+    background-color: green;
+    color: white;
+  }
+  
+  .wrong-guess {
+    background-color: red;
+    color: white;
+  }
+  
